@@ -162,6 +162,12 @@ run:
 
   - exec:
       cd: $home
+      cmd:
+        - su discourse -c 'bundle exec rake themes:update'
+      raise_on_fail: false
+
+  - exec:
+      cd: $home
       hook: db_migrate
       cmd:
         - su discourse -c 'bundle exec rake db:migrate'
